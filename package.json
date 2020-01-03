@@ -1,12 +1,12 @@
 {
   "name": "kj-package",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/hkjpotato/kj-package.git"
-  },  
+    "type": "git",
+    "url": "https://github.com/hkjpotato/kj-package.git"
+  },
   "scripts": {
     "release": "npm publish --access public",
     "test": "echo \"Error: no test specified\" && exit 1"

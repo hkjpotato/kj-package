@@ -50,3 +50,19 @@ module.exports.MyComp = MyComp;
 ```
 
 Also notice locally now, we can't even run our code by `node index.js`, since we have only webpack locally(useless), not react.
+
+v1.0.5 - v1.0.6
+Now we install react as devDepency locally. We can run `npm run start` to develope it.
+Again, consumer won't install react automatically.
+
+Up till now, consumer is using our source code directly in `index.js`. Let's add webpack to bundle it.
+
+This starts become tricky. Our bundle code will contains React! (check the dist/main.js)
+
+If we keep our `main` as `index.js`, consumer wont get React from us.
+If we change our `main` to `dist/main.js`, when they install, they will load react code from our local dist.
+
+We dont want to ship the local React to consumer!
+
+Can we uninstall local React and wish webpack ignore it? No. When webpack run, it __PARSE__ the source code and notice you are requiring React.
+Also, we still want to develop it locally, it is our devDependencies!

@@ -14,5 +14,7 @@ function MyComp() {
     )
 }
 
+console.log('package use this React', React);
+
 module.exports.hello = hello;
 module.exports.MyComp = MyComp;

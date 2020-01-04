@@ -1,6 +1,6 @@
 {
   "name": "kj-package",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "repository": {
@@ -15,5 +15,8 @@
   "license": "ISC",
   "peerDependencies": {
     "react": "^0.14.9 || ^15.3.0 || ^16.0.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.5"
   }
 }

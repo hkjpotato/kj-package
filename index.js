@@ -13,8 +13,6 @@ function MyComp() {
         ['hello']
     )
 }
-
-console.log('package use this React', React);
-
+console.log('package use this React', React.version);
 module.exports.hello = hello;
 module.exports.MyComp = MyComp;

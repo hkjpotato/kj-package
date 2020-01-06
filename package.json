@@ -1,6 +1,6 @@
 {
   "name": "kj-package",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "",
   "main": "dist/main.js",
   "repository": {
@@ -8,9 +8,9 @@
     "url": "https://github.com/hkjpotato/kj-package.git"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.js --mode=production",
+    "build": "webpack --config webpack.config.js --mode=development",
     "start": "node index.js",
-    "release": "npm publish --access public",
+    "release": "npm run build && npm publish --access public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -19,7 +19,6 @@
     "react": "^0.14.9 || ^15.3.0 || ^16.0.0"
   },
   "devDependencies": {
-    "react": "^16.12.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   }

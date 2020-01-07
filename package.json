@@ -1,6 +1,6 @@
 {
   "name": "kj-package",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "",
   "main": "dist/main.js",
   "repository": {
@@ -19,6 +19,7 @@
     "react": "^0.14.9 || ^15.3.0 || ^16.0.0"
   },
   "devDependencies": {
+    "react": "^16.12.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   }

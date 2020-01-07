@@ -99,3 +99,41 @@ To remove React from the bundle, we need to declare React as externals. Also, if
 Notice the current root is default to window, which means you can only run this code in browser. (window is the global object in browser, not nodejs).
 
 note: peerDependencies is used by npm, external is used by webpack.
+
+v1.0.9
+We need to sepecify the globalObject in webpack output, otherwise in webpack4 it will defaults to 'window'.
+```javascript
+    // webpack3 behaviors on globalObject otherwise it will be default to 'window'
+    // https://github.com/webpack/webpack/issues/6522#issuecomment-374760683
+    globalObject: 'typeof self !== \'undefined\' ? self : this',
+```
+
+How our bundle file will be used is important and extremely tricky!
+
+__Load in browser directly__:
+
+In local development, or used by static website to load dist/main.js directly. Then 4th route from the `webpackUniversalModuleDefinition` will be triggered.
+
+__Import as node pacakage by consumer__:
+
+It will be imported as a normal node modules and first route will be triggered. Server rendering will be the same case.
+
+__Bundled by webpack of consumer__:
+
+Bundle happened on Server side. When webpack encounters this package, what I found currently (might be wrong) is:
+The current package is wrapped in the webpackUniversalModuleDefinition IIFE, the IIFE will be executed during the bundle time to determine the output.
+
+Thus, the output will be the first route: as a commonJS package
+
+The current conclusion is:
+The code in dist with a umd definition, unless directly loaded in browser side (during development, or directly loaded in static website), will always be treated as a commonJS package.
+
+The real question is: how should consumer treat our package?
+
+Should consumer declare our pacakge as an external package?
+
+If so, when consumer bundle, it won't bundle our code. Our pacakge will be treated as jQuery or React. In client side rendering, our package will be loaded separately. The pros of it is several consumers can share a singleton our pacakge.
+
+In server side, for development, the consumer need to import our pacakge as a devDependency, so it is available during development. When bundle, consumer should not include our code.
+
+-

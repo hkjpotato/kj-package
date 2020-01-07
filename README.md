@@ -136,4 +136,14 @@ If so, when consumer bundle, it won't bundle our code. Our pacakge will be treat
 
 In server side, for development, the consumer need to import our pacakge as a devDependency, so it is available during development. When bundle, consumer should not include our code.
 
+A POC on how it will work is available at 
+https://codepen.io/pen?&editable=true&editors=0010
+
+In this POC:
+React and ReactDOM is available in global namespace of browser. The bundle for kj-package (window route) is loaded. Then the bundle of kj-parent is loaded.
+
+kj-package: https://github.com/hkjpotato/kj-package.git
+
+kj-parent: https://github.com/hkjpotato/kj-parent.git
+
 -
